@@ -1,5 +1,5 @@
 <?php
-   include("database.php");
+   include("database/database.php");
    session_start();
    if(isset($_SESSION["login"])){
     header("location: index.php");
@@ -10,10 +10,14 @@
       // username and password sent from form 
       
       $username = htmlspecialchars($_POST['username']);
-      $password = htmlspecialchars($_POST['password']); 
+      $password = htmlspecialchars($_POST['password']);
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT); 
       $email = htmlspecialchars($_POST['email']); 
-      
-      $sql = "SELECT id FROM users WHERE login = '$username'";
+      $firstName = htmlspecialchars($_POST['firstName']); 
+      $lastName = htmlspecialchars($_POST['lastName']); 
+      var_dump($hashedPassword);
+
+      $sql = "SELECT id FROM users WHERE username = '$username'";
       $result = $pdo->query($sql);
       $row = $result->fetch(PDO::FETCH_ASSOC);      
       
@@ -22,7 +26,7 @@
 		
       if($row == null) {
           try{
-            $sql = "INSERT INTO users (login, haslo, email) VALUES ('$username','$password','$email')";
+            $sql = "INSERT INTO users (username, password, email, firstName, lastName) VALUES ('$username','$hashedPassword','$email', '$firstName', '$lastName')";
             $result = $pdo->query($sql);
             $_SESSION['login'] = $username;
             header("location: index.php");
@@ -69,10 +73,13 @@
             <div style = "margin:30px">
                
                <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
+                  <label>Login  :</label><input type = "text" name = "username" class = "box"/><br /><br />
+                  <label>Hasło  :</label><input type = "password" name = "password" class = "box" /><br/><br />
                   <label>Email  :</label><input type = "email" name = "email" class = "box" /><br/><br />
+                  <label>Imię :</label><input type = "text" name = "firstName" class = "box" /><br/><br />
+                  <label>Nazwisko  :</label><input type = "text" name = "lastName" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
+                  <a href="/login.php">Logowanie</a>
                </form>
                
                <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>

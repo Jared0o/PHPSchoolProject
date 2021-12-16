@@ -1,5 +1,5 @@
 <?php
-   include("database.php");
+   include("database/database.php");
    session_start();
    if(isset($_SESSION["login"])){
     header("location: index.php");
@@ -12,23 +12,23 @@
       $username = htmlspecialchars($_POST['username']);
       $password = htmlspecialchars($_POST['password']); 
       
-      $sql = "SELECT id FROM users WHERE login = '$username' and haslo = '$password'";
+      $sql = "SELECT id, password FROM users WHERE username = '$username'";
       $result = $pdo->query($sql);
       $row = $result->fetch(PDO::FETCH_ASSOC);      
       
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($row != null && count($row) == 1) {
-        if(!isset($_SESSION["login"])){
-            $_SESSION['login'] = $username;
-            header("location: index.php");
-        }
-         
-      }else {
-         $error = "Podałeś nieprawidłowy login lub hasło";
+      $isPasswordCorrect = password_verify($password, $row['password'] ?? null);
+      echo $isPasswordCorrect;      
+         if($isPasswordCorrect) {
+         if(!isset($_SESSION["login"])){
+               $_SESSION['login'] = $username;
+               header("location: index.php");
+         }
+
+            
+         }else {
+            $error = "Podałeś nieprawidłowy login lub hasło";
+         }
       }
-   }
 ?>
 <html>
    
@@ -51,7 +51,6 @@
       </style>
       
    </head>
-   
    <body bgcolor = "#FFFFFF">
 	
       <div align = "center">
@@ -64,6 +63,7 @@
                   <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
                   <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
+                  <a href="/register.php">Rejestracja</a>
                </form>
                
                <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>

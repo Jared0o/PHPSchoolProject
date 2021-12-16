@@ -1,8 +1,9 @@
 <?php
-
 include('session.php');
-?>
+include('database/databasefunctions.php');
 
+$products = getAllProducts($pdo);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,26 @@ include('session.php');
     <title>Document</title>
 </head>
 <body>
-     <h1>Dupa</h1>
+    <?php include('components/navigation.php'); ?>
+     <h1>Witamy w sklepie Sklepooo</h1>
+
+     <div class="shop">
+         <h3>Wybierz interesujące Cię produkty</h1>
+         <div class="products">
+             <?php
+                foreach($products as $product){
+                    $id = $product['id'];
+                    echo '<a href="product.php/?id=' . $id . '" class="product">';
+                    echo '<p class="title">Nazwa: '. $product['name'] .'</p>';
+                    echo '<p class="price">Cena: '. $product['price'] .'</p>';
+                    echo '<p class="quantity">Dostępna ilość: '. $product['quantity'] .'</p>';
+                    echo '<img src="'. $product['imageUrl'] .'" alt="'. $product['name'] .' zdjęcie">';
+                    echo '</a>';
+                }
+             ?>
+         </div>
+        <img src="" alt="">
+     </div>
 
 <script src="js/main.js"></script>
 </body>

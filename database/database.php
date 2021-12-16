@@ -1,9 +1,9 @@
 <?php
 $mysql_host = 'localhost'; 
 $port = '3306'; 
-$username = 'produkty';
-$password = 'produkty';
-$database = 'produkty'; //'produkty'
+$username = 'sklep';
+$password = 'sklep';
+$database = 'sklep'; //'produkty'
 
 try{
 	$pdo = new PDO('mysql:host='.$mysql_host.';dbname='.$database.';port='.$port, $username, $password );
@@ -12,3 +12,4 @@ try{
 }catch(PDOException $e){
 	echo 'Połączenie nie mogło zostać utworzone.<br />';
 }
+
