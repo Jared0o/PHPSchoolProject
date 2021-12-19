@@ -1,3 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 .hidden{
     display: none;
+}
+
+body {
+    background-color: #F7F8FA;
+    font-family: 'Montserrat', sans-serif;
+    color: #737C8E;
+}
+
+.main-nav{
+    margin: 5px 0;
+}
+
+.nav-list {
+    display: flex;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #737C8E;
+    font-size: 20px;
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+.shop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.product {
+    margin-right: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    width: 300px;
+    height: 200px;
+    background-color: #FFFFFF;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.09);
+}
+
+.product-img {
+    margin-left: 15px;
+    height: 50%;
+}
+
+.product-text{
+    line-height: 1.6;
+}
+
+.product-title {
+    font-size: 18px;
+}
+
+.product-price {
+    font-size: 15px;
+}
+
+.product-button {
+    color: #737C8E;
+    background-color:  #ECEFF7;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.products {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    max-width: 1200px;
+}
+
+.login {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+  }
+.login-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+  .form {
+    background: #FFFFFF;
+    border-radius: 10px;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+  }
+  
+  .form input {
+    box-sizing: border-box;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    margin: 0 0 15px;
+    padding: 15px;
+    font-size: 14px;
+  }
+  
+  .form input:focus {
+    background: #dbdbdb;
+  }
+  
+  .form button {
+    text-transform: uppercase;
+    outline: 0;
+    background: #4b6cb7;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .form button:active {
+    background: #395591;
+  }
+  
+  .form span {
+    font-size: 75px;
+    color: #4b6cb7;
+  }
+
+  .form-link {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    outline: 0;
+    background: #CB8581;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+
+.admin-title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.form-title{
+    text-align: center;
+    margin: 15px;
+}
+
+.admin-form{
+    display: flex;
+    max-width: 1360px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.left {
+    margin-right: 70px;
+}
+
+tr, th {
+    padding: 20px;
+}
+
+.form-order {
+    display: flex;
+    max-width: 1360px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-order .btb-order {
+    max-width: 200px;
+    background: #CB8581;
+}
+
+.full-price{
+    font-weight: bold;
+    padding: 10px;
+    color: #CB8581;
+}
+
+.order-details {
+    line-height: 1.4;
+    font-size: 20px;
 }
